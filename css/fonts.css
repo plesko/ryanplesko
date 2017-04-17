@@ -1,0 +1,262 @@
+@font-face {
+    font-family: 'ProximaNovaSemibold';
+    src: url('fonts/proximanova-semibold-webfont.eot');
+    src: url('fonts/proximanova-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proximanova-semibold-webfont.woff') format('woff'),
+         url('fonts/proximanova-semibold-webfont.ttf') format('truetype'),
+         url('fonts/proximanova-semibold-webfont.svg#ProximaNovaSemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/*
+@font-face {
+    font-family: 'ProximaNovaSemiboldItalic';
+    src: url('fonts/proximanova-semibolditalic-webfont.eot');
+    src: url('fonts/proximanova-semibolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proximanova-semibolditalic-webfont.woff') format('woff'),
+         url('fonts/proximanova-semibolditalic-webfont.ttf') format('truetype'),
+         url('fonts/proximanova-semibolditalic-webfont.svg#ProximaNovaSemiboldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+*/
+
+@font-face {
+    font-family: 'ProximaNovaLight';
+    src: url('fonts/proximanova-light-webfont.eot');
+    src: url('fonts/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proximanova-light-webfont.woff') format('woff'),
+         url('fonts/proximanova-light-webfont.ttf') format('truetype'),
+         url('fonts/proximanova-light-webfont.svg#ProximaNovaRegularItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'ProximaNovaBold';
+    src: url('fonts/proximanova-bold-webfont.eot');
+    src: url('fonts/proximanova-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proximanova-bold-webfont.woff') format('woff'),
+         url('fonts/proximanova-bold-webfont.ttf') format('truetype'),
+         url('fonts/proximanova-bold-webfont.svg#ProximaNovaBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/*
+@font-face {
+    font-family: 'ProximaNovaBoldItalic';
+    src: url('fonts/proximanova-boldit-webfont.eot');
+    src: url('fonts/proximanova-boldit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proximanova-boldit-webfont.woff') format('woff'),
+         url('fonts/proximanova-boldit-webfont.ttf') format('truetype'),
+         url('fonts/proximanova-boldit-webfont.svg#ProximaNovaBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+*/
+
+@font-face {
+    font-family: 'ProximaNovaRegular';
+    src: url('fonts/proximanova-regular-webfont.eot');
+    src: url('fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proximanova-regular-webfont.woff') format('woff'),
+         url('fonts/proximanova-regular-webfont.ttf') format('truetype'),
+         url('fonts/proximanova-regular-webfont.svg#ProximaNovaRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'GoudyBookletter1911Regular';
+    src: url('fonts/goudybookletter1911-webfont.eot');
+    src: url('fonts/goudybookletter1911-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/goudybookletter1911-webfont.woff') format('woff'),
+         url('fonts/goudybookletter1911-webfont.ttf') format('truetype'),
+         url('fonts/goudybookletter1911-webfont.svg#GoudyBookletter1911Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'JosefinSlabBold';
+    src: url('fonts/josefinslab-bold-webfont.eot');
+    src: url('fonts/josefinslab-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/josefinslab-bold-webfont.woff') format('woff'),
+         url('fonts/josefinslab-bold-webfont.ttf') format('truetype'),
+         url('fonts/josefinslab-bold-webfont.svg#JosefinSlabBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'JosefinSlabBoldItalic';
+    src: url('fonts/josefinslab-bolditalic-webfont.eot');
+    src: url('fonts/josefinslab-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/josefinslab-bolditalic-webfont.woff') format('woff'),
+         url('fonts/josefinslab-bolditalic-webfont.ttf') format('truetype'),
+         url('fonts/josefinslab-bolditalic-webfont.svg#JosefinSlabBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Magnola';
+    src: url('fonts/magnola-webfont.eot');
+    src: url('fonts/magnola-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/magnola-webfont.woff') format('woff'),
+         url('fonts/magnola-webfont.ttf') format('truetype'),
+         url('fonts/magnola-webfont.svg#MagnolaRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Bebas';
+    src: url('fonts/BebasNeue-webfont.eot');
+    src: url('fonts/BebasNeue-webfont.eot?iefix') format('eot'),
+         url('fonts/BebasNeue-webfont.woff') format('woff'),
+         url('fonts/BebasNeue-webfont.ttf') format('truetype'),
+         url('fonts/BebasNeue-webfont.svg#webfontj1CI1MAi') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+  font-family: "plesko-v2";
+  src:url("fonts/plesko-v2.eot");
+  src:url("fonts/plesko-v2.eot?#iefix") format("embedded-opentype"),
+    url("fonts/plesko-v2.woff") format("woff"),
+    url("fonts/plesko-v2.ttf") format("truetype"),
+    url("fonts/plesko-v2.svg#plesko-v2") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "plesko-v2" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "plesko-v2" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-menu:before {
+  content: "a";
+}
+.icon-home:before {
+  content: "b";
+}
+.icon-facebook:before {
+  content: "c";
+}
+.icon-code:before {
+  content: "d";
+}
+.icon-book-open:before {
+  content: "e";
+}
+.icon-book:before {
+  content: "f";
+}
+.icon-briefcase:before {
+  content: "g";
+}
+.icon-brush:before {
+  content: "h";
+}
+.icon-archive:before {
+  content: "i";
+}
+.icon-down-open-big:before {
+  content: "j";
+}
+.icon-flickr:before {
+  content: "k";
+}
+.icon-gplus:before {
+  content: "l";
+}
+.icon-instagram:before {
+  content: "m";
+}
+.icon-left-open-big:before {
+  content: "n";
+}
+.icon-linkedin:before {
+  content: "o";
+}
+.icon-mobile:before {
+  content: "p";
+}
+.icon-paper-plane:before {
+  content: "q";
+}
+.icon-pinterest:before {
+  content: "r";
+}
+.icon-right-open-big:before {
+  content: "s";
+}
+.icon-skype:before {
+  content: "t";
+}
+.icon-twitter:before {
+  content: "u";
+}
+.icon-up-open-big:before {
+  content: "v";
+}
+.icon-tools:before {
+  content: "w";
+}
+.icon-rocket:before {
+  content: "x";
+}
+.icon-user:before {
+  content: "y";
+}
+.icon-palette:before {
+  content: "z";
+}
+.icon-mail:before {
+  content: "A";
+}
+.icon-link:before {
+  content: "B";
+}
+.icon-github:before {
+  content: "C";
+}

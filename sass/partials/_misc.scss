@@ -1,0 +1,14 @@
+aside.responsive {
+  bottom: .3em;
+  display: block;
+  margin: 0 0 0 .25em;
+  position: absolute;
+
+  p {
+    background: url(/images/responsive.png) no-repeat center left;
+    color: #4b4d51;
+    font-size: .6em;
+    line-height: 100%;
+    padding-left: 33px;
+  }
+}

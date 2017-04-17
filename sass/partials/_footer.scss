@@ -1,0 +1,17 @@
+footer.global {
+  display: none;
+  background: $black;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  
+  h1 {
+    font-size: 1em;
+    padding: .5em 1em;
+    
+    a {
+      color: $gray;
+    }
+  }
+}

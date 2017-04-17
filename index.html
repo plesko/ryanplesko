@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+    <meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="apple-mobile-app-capable" content="yes">
+		<title>Ryan Plesko</title>
+		<meta name="description" content="Ryan Plesko is a multidisciplinary user experience designer and developer in Dallas, Texas." />
+		<meta name="keywords" content="Dallas, user-experience, design, development, marketing, strategy" />
+		<meta name="author" content="Ryan Plesko" />
+		<link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/fonts.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<script src="js/modernizr.custom.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwA40cYGG0VuitYeGOyyLCwct-LPdR7hE"></script>
+    <script src="https://www.google.com/jsapi?key=AIzaSyDwA40cYGG0VuitYeGOyyLCwct-LPdR7hE"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-42950639-5', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    <script>
+      var map; //the google map
+      var directionsService; //service that provides directions to get to our destination
+      var directionsDisplay; //rendeder that draws directions on map
+      var destinationName = "Pleskotopia";
+      var Pleskotopia = new google.maps.LatLng(32.781252, -96.797531);
+      var mapCreated = false;
+
+
+      function initiate_geolocation(skipHTML5){
+
+        if (!skipHTML5 && navigator.geolocation) {
+          // HTML5 GeoLocation
+          function getLocation(position) {
+            showMapAndRoute({
+              "lat": position.coords.latitude,
+              "lng": position.coords.longitude
+            });
+          }
+          navigator.geolocation.getCurrentPosition(getLocation, error);
+        } else {
+          // Google AJAX API fallback GeoLocation
+          if (typeof google == 'object') {
+            var geocoder = new google.maps.Geocoder();
+            if (google.loader.ClientLocation) {
+              showMapAndRoute({
+                "lat": google.loader.ClientLocation.latitude,
+                "lng": google.loader.ClientLocation.longitude
+              });
+            } else {
+              
+            }
+          }
+        }
+      }
+
+      // Render a map without directions after 6 seconds if no map has been created - for if a user says "not now" or closes the request for geolocation
+      setTimeout(function(){
+        if ((mapCreated == false) && (!$.trim( $('#map_canvas').html()).length)) {
+          simpleMap();
+        }
+      }, 6000);
+
+      function showMapAndRoute(l) {
+        var latlng = new google.maps.LatLng(l.lat,l.lng);
+
+        var myOptions = {
+          zoom: 8,
+          center: Pleskotopia,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        directionsDisplay = new google.maps.DirectionsRenderer();
+        directionsDisplay.setMap(map);
+        // directionsDisplay.setPanel(document.getElementById("route"));
+
+        //set mapCreated to true to turn timer off
+        mapCreated = true;
+
+        var request = {
+          origin: l.lat + ',' + l.lng ,
+          destination: Pleskotopia,
+          travelMode: google.maps.DirectionsTravelMode.DRIVING
+        };
+
+        directionsService = new google.maps.DirectionsService();
+        directionsService.route(request, function(result, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(result);
+          }
+        });
+      }
+
+      function simpleMap() {
+        var Pleskotopia = new google.maps.LatLng(32.781252, -96.797531);
+        
+        var mapOptions = {
+          zoom: 12,
+          center: Pleskotopia,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          mapTypeControl: true,
+          mapTypeControlOptions: {
+              style: google.maps.MapTypeControlStyle.DEFAULT,
+              position: google.maps.ControlPosition.TOP_RIGHT
+          },
+          panControl: false,
+          zoomControl: true,
+          zoomControlOptions: {
+              style: google.maps.ZoomControlStyle.SMALL,
+              position: google.maps.ControlPosition.RIGHT_TOP
+          },
+          scaleControl: false,
+          streetViewControl: false
+        }
+        var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+        
+        var contentString = '<div id="mapcontent">'+
+          '<h2>Pleskotopia</h2>'+
+          '<p>Native habitat of wild Pleskos</p>'+
+          '</div>';
+      
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+        
+        var marker = new google.maps.Marker({
+          map:map,
+          animation: google.maps.Animation.DROP,
+          position: Pleskotopia,
+          title: 'Pleskotopia'
+        });
+      }
+
+      function error(e) {
+        switch(e.code)
+        {
+          case e.TIMEOUT:
+          console.log("timeout");
+          break;
+          case e.POSITION_UNAVAILABLE:
+          console.log("position unavailable");
+          break;
+          case e.PERMISSION_DENIED:
+          console.log("permission denied");
+          break;
+          case e.UNKNOWN_ERROR:
+          console.log("unknown error");
+          break;
+        }
+        //try to get location using Google Geocoder
+        initiate_geolocation(true);
+      }
+    </script>
+	</head>
+	<body onload="initiate_geolocation()" id="body">
+		<div id="container" class="container">
+			<nav class="menu push" id="menu">
+				<ul>
+					<li><a class="icon-home" href="#home">Home</a></li>
+					<li><a class="icon-book-open" href="#about">About</a></li>
+					<li><a class="icon-briefcase" href="#work">Work</a></li>
+					<li><a class="icon-paper-plane" href="#contact">Contact</a></li>
+				</ul>
+			</nav>
+			<div id="push-effect" class="fixed-nav">
+				<button id="menu-button" class="icon-menu background--light" data-effect="push"></button>
+			</div>
+			<div class="pusher"><!-- content push wrapper -->
+				<div class="content"><!-- this is the wrapper for the content -->
+					<div class="content-inner"><!-- extra div for emulating position:fixed of the menu -->
+						<article class="home clearfix">
+							<header class="home-header">
+								<h1>Hi. I&rsquo;m Ryan.</h1>
+                <h2>I do more than design experiences, I create connections.</h2>
+							</header>
+							<div class="main column">
+								<p class="mobileCut">I build things that connect people – websites, applications, furniture, cars and communities. Any worthwhile project can result in a positive association, be it between a company and a consumer or a driver and a vintage 1974 BMW 2002. I believe in the power of connection to establish long-lasting relationships, and that&rsquo;s why I&rsquo;m glad you&rsquo;re here. Take a few minutes to get to know me, and if you feel a connection, shoot me a message. I&rsquo;d love to talk.</p>
+								<a class="button yellow toAbout" href="#" title="Learn more about Ryan Plesko">A whole lot more about me<span class="icon-down-open-big"></span></a>
+							</div><!-- /main -->
+              <div class="image column"><img src="../images/ryan-headshot.png" alt="Ryan Plesko"></div>
+						</article>
+						<article class="about clearfix" id="about">
+							<header class="about-header">
+								<h1>It&rsquo;s about relationships.</h1>
+                <h2>It&rsquo;s about connection.</h2>
+							</header>
+							<div class="main clearfix">
+								<p>The experiences you remember are the ones that make you feel connected to something bigger.</p>
+                <p>When I first began designing and developing in the late 1990s, the Internet was an emotionless vehicle for push-based marketing. Over the years, I&rsquo;ve been a part of its evolution into an interactive, user-centric environment. I&rsquo;m constantly amazed and inspired by the ability of the web to bring people together and create meaningful, long-lasting relationships. It&rsquo;s what drives my designs and my approach to digital marketing. The Internet is one vast opportunity to create connections.</p>
+                <p>I started my career as a thermal engineer in Dell&rsquo;s research and development lab. I&rsquo;d always thought of industrial design as purely functional, but in my time there I learned about user experience – long before &ldquo;user experience&rdquo; was a digital marketing catchphrase. I learned just how much a change in design can alter a person&rsquo;s entire perception of an experience, turning a tedious task into something pleasurable. I realized how design can reach people on a fundamental, personal level, and I decided to take that lesson and apply it to the rapidly evolving digital marketing world.</p>
+                <p>I find humans fascinating to study - how decisions are made, what perceptions are created, when the learning curve is too high or the attention span too low. I took the truths I&rsquo;d realized in engineering into the consulting world, designing exhaustive campaigns targeted toward creating the kind of connection I knew was possible. I traveled nationwide to talk to people about the new world of user experience and its part in creating successful projects. The Internet could be about more than conventional, simplictic push marketing, it could create connections with people.</p>
+                <p>The early 2000s were great years to be in on the emergence of digital, and I found that my excitement was shared by hundreds of lone Internet wolves hungry for a community. In my hometown of College Station, Texas, I longed for a space that encouraged the free exchange of ideas and let people feed off of each other&rsquo;s creative energy. That&rsquo;s why, in 2007, I cofounded <a href="http://thecreativespace.org/" title="The Creative Space" target="_blank">The Creative Space</a>, the first coworking space in Texas and the second in the country. It didn&rsquo;t take long before our group of designers, developers, tech junkies and entrepreneurs began spending days and nights creating, sharing and learning. Lots of ideas had their genesis in the Creative Space, and the late 2000s found me happily designing, developing and promoting my enthusiasm for community and connection through events that brought people together in what were, essentially, larger, days-long iterations of the Creative Space.</p>
+                <p>We were in a small town, but we had big dreams. The kind of community we were creating was fresh and new to College Station and, after spending years driving to Dallas, Austin and Houston, we brought those events back home. In 2008, we put on BarCampTexas, which brought together nearly 400 design and technology professionals from all over Texas for a weekend of networking and idea sharing.</p>
+                <p>One fortuitous night in 2007, I found myself sitting among friends discussing the <a href="http://ted.com" title="TED" target="_blank">TED conference</a>, which had just begun publishing talks online for the first time. We wanted to attend, but none of us had an invite and none of us had the thousands of dollars required for a ticket. What started as a plan to fly to Monterrey to mingle with the TED community became the seed for something bigger.</p>
+                <p>In February of 2008 we held the inaugural <a href="http://bilconference.com" title="The BIL Conference" target="_blank">BIL Conference</a>, right across the street from TED, where hundreds came to share ideas freely, including speakers and attendees from TED. BIL became an open, egalitarian forum that offers everyone the opportunity to experience the idea sharing we imagined existed at TED – an experience we admired and greatly wanted to be a part of. As Wired magazine put it, <a href="http://archive.wired.com/techbiz/people/news/2008/03/bil" target="_blank">BIL borrows from TED&rsquo;s big ideas, not its pretense</a>.</p>
+                <p>The following year, while serving as the vice president and chairman of the DFW Usability Professionals&rsquo; Association, I cofounded the <a href="http://go.dallasnews.com/news/2009/may/31/big-design-conference/" target="_blank">Big Design Conference</a>, bringing the Dallas design community together for three intense days of nerding out over strategy, social media, user experience and code development. As with every project I work on, I took the inspiration I found at these events and applied it to my own work.</p>
+                <p>By 2011, I was ready for a new challenge. I cofounded the digital creative agency Extra Sauce to help clients build the sort of connections that create true brand loyalty and maximize ROI. I managed the strategic and creative direction of our client campaigns, working with brands such as Coca-Cola, Smirnoff, Cadillac and the US Army. My conviction that the best ideas come from a culture of collaboration and an understanding of how to build relationships drove both our creative strategy and our internal culture. We were a family, dedicated to our team and to pushing ourselves to reach ever-rising standards of quality for our clients. The <i>extra sauce</i> oozed into the community, too, as I was named one of the top Dallasites on Twitter in Culture Map&rsquo;s article &ldquo;<a href="http://dallas.culturemap.com/news/innovation/10-02-12-honey-badgers-and-people-you-wish-you-were-friends-with-our-favorite-dallasites-on-twitter-now/" target="_blank" title="Honey Badgers and People You Wish You Were Friends With">Honey Badgers and People You Wish You Were Friends With</a>&rdquo;</p>
+                <p>Extra Sauce underwent a pivot in 2013, and I decided to return to consulting and involvement in the community. I sit on the board of <a href="http://dallas.startupweek.co" target="_blank">Dallas Startup Week</a>, an organization that promotes small businesses and gives entrepreneurs guidance to help them achieve success. My belief in the intrinsic power of personal connection hasn&rsquo;t faltered since my early days at Dell, and it&rsquo;s always been the bedrock of the powerful campaigns I deliver to my clients. I do more than design experiences. I create relationships. If this is interesting to you, <a class="toContact" href="#">reach out to me</a>, and let&rsquo;s talk.</p>
+                <p>Want a resume? I put one together <a href="http://ryanplesko.com/Plesko-Resume-2017.pdf" target="_blank" title="Ryan Plesko Resume">here</a>.</p>
+							</div><!-- /main -->
+						</article>
+						<article class="work" id="work">
+              <h2 class="hidden">My Work</h2>
+							<div class="panelWrapper">
+								<section class="panel left"><h2 class="hidden">empty</h2></section>
+								<section class="panel current intro">
+									<div id="intro" class="project center dark cf">
+                    <h2>My work speaks for itself.</h2>
+                    <h3>But I added some words anyway.</h3>
+                    <a class="button yellow toProject" href="#" title="Check out my work">Check it out<span class="icon-right-open-big"></span></a>
+                  </div> <!-- end wrapper -->
+								</section>
+								<section class="panel right"><h2 class="hidden">empty</h2></section>
+                <a class="arrow left background--dark" href="#" title="Previous">Previous</a>
+                <a class="arrow right background--dark" href="#" title="Next">Next</a>
+                <span class="swipe"><span class="icon-left-open-big"></span>Swipe<span class="icon-right-open-big"></span></span>
+							</div>
+							<footer class="work-footer">
+								<div class="wrapper">
+									<div class="arrows">
+										<a class="arrow left" href="#" title="Previous">Previous</a>
+										<a class="arrow right" href="#" title="Next">Next</a>
+									</div>
+									<ul>
+										<li><a href="#coke" title="Coca-Cola"><img src="../images/work-nav/coca-cola-logo.png" alt="Coca-Cola"></a></li>
+										<li><a href="#lincoln" title="Lincoln"><img src="../images/work-nav/lincoln-logo.png" alt="Lincoln"></a></li>
+										<li><a href="#smirnoff" title="Smirnoff"><img src="../images/work-nav/smirnoff-logo.png" alt="Smirnoff"></a></li>
+										<li><a href="#bil" title="BIL"><img src="../images/work-nav/bil-logo.png" alt="BIL"></a></li>
+										<li><a href="#toyota" title="Toyota"><img src="../images/work-nav/toyota-logo.png" alt="Toyota"></a></li>
+										<li class="selected"><a href="#intro" title="Introduction to my work"><img src="../images/work-nav/menu.png" alt="Menu"></a></li>
+										<li><a href="#usarmy" title="US Army"><img src="../images/work-nav/army-logo.png" alt="US Army"></a></li>
+										<li><a href="#meta" title="Meta"><img src="../images/work-nav/meta-logo.png" alt="Meta"></a></li>
+										<li><a href="#cadillac" title="Cadillac"><img src="../images/work-nav/cadillac-logo.png" alt="Cadillac"></a></li>
+										<li><a href="#tedxsmu" title="TEDxSMU"><img src="../images/work-nav/tedxsmu-logo.png" alt="TEDxSMU"></a></li>
+										<li><a href="#fatboy" title="Fatboy"><img src="../images/work-nav/fatboy-logo.png" alt="Fatboy"></a></li>
+										<li><a href="#cumulus" title="Cumulus"><img src="../images/work-nav/cumulus-logo.png" alt="Cumulus"></a></li>
+									</ul>
+								</div>
+							</footer>
+						</article>
+						<article class="contact" id="contact">
+							<div class="contentWrapper">
+                <header class="contact-header">
+  								<h1>I&rsquo;m friendly.</h1>
+                  <h2>You can get a hold of me in any of these ways.</h2>
+  							</header>
+  							<div class="main clearfix">
+  								<div class="text">
+                    <h3>On the Interwebs</h3>
+                    <ul>
+                      <li><a href="http://facebook.com/plesko" title="Ryan Plesko on Facebook" target="_blank" class="icon-facebook">facebook.com/plesko</a></li>
+                      <li><a href="http://twitter.com/plesko" title="Ryan Plesko on Twitter" target="_blank" class="icon-twitter">twitter.com/plesko</a></li>
+                      <li><a href="http://linkedin.com/in/plesko" title="Ryan Plesko on LinkedIn" target="_blank" class="icon-linkedin">linkedin.com/in/plesko</a></li>
+                      <li><a href="http://pinterest.com/plesko" title="Ryan Plesko on Pinterest" target="_blank" class="icon-pinterest">pinterest.com/plesko</a></li>
+                      <li><a href="http://instagram.com/plesko" title="Ryan Plesko on Instagram" target="_blank" class="icon-instagram">instagram.com/plesko</a></li>
+                      <li><a href="https://www.flickr.com/people/plesko" title="Ryan Plesko on Flickr" target="_blank" class="icon-flickr">flickr.com/people/plesko</a></li>
+                    </ul>
+                    <h3>Come See Me</h3>
+                    <a class="button outline toMap" href="#" title="Directions from you to Ryan Plesko">How to get from you to Ryan</a>
+                  </div>
+                  <form id="contactForm">
+                    <h3>Shoot me a note</h3>
+                    <p>If you're contacting me about new business, it will be helpful to include as many details, goals, dates, and budgetary considerations as possible. Thanks!</p>
+                    <div id="confirmations">
+                      <p class="error" id="name_empty">Ahem... Your name would be helpful.</p>
+                      <p class="error" id="email_empty">No email address? Really? You're better than that.</p>
+                      <p class="error" id="email_invalid">That doesn't seem to be a valid email address.</p>
+                      <p class="error" id="company_empty">Can you give us a company name? We like to do our research before getting back to folks.</p>
+                      <p class="error" id="phone_empty">You didn't enter a phone number. We generally email first, but we like to have all the contact information we can get.</p>
+                      <p class="error" id="message_empty">You didn't write a message. We're confused. Isn't the point of this form to send a message?</p>
+                      <p class="error" id="send_error">Um. Sorry. We're having trouble sending the message right now. Try using your email app and <a href="mailto:info@extrasauce.com" title="Email Extra Sauce">info@extrasauce.com</a>.</p>
+                      <p class="success" id="success">Awesome. Got it. We'll get back to you as soon as possible.</p>
+                      <hr>
+                    </div>
+                    <fieldset>
+                      <p class="hint">All fields are required (I know! Geez!)</p>
+                      <p class="inputs">
+                        <label for="name">Name</label>
+                        <input autocomplete="off" type="text" name="name" id="name">
+                      </p>
+                      <p class="inputs">
+                        <label for="email">Email</label>
+                        <input autocomplete="off" type="email" name="email" id="email">
+                      </p>
+                      <p class="inputs">
+                        <label for="company">Company</label>
+                        <input autocomplete="off" type="text" name="company" id="company">
+                      </p>
+                      <p class="inputs">
+                        <label for="phone">Phone</label>
+                        <input autocomplete="off" type="tel" name="phone" id="phone">
+                      </p>
+                      <p class="inputs textarea">
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message"></textarea>
+                      </p>
+                      <a class="button" id="contactSubmit" href="#" title="Send">Send</a>
+                    </fieldset>
+                  </form>
+  							</div><!-- /main -->
+              </div><!-- /panelWrapper -->
+						</article>
+            <article class="map" id="map">
+              <h2 class="hidden">map</h2>
+              <div id="map-overlay"></div>
+              <div id="map_canvas"></div>
+            </article>
+					</div><!-- /content-inner -->
+				</div><!-- /content -->
+			</div><!-- /pusher -->
+		</div><!-- /container -->
+    <div class="overlay overlay-contentscale">
+      <div class="overlay-wrap">
+        <button type="button" id="overlay-close">Close</button>
+        <div class="projectDeets slide cf">
+          <p></p>
+        </div>
+      </div>
+    </div>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+		<script>window.jQuery || document.write("<script src='js/jquery-1.11.2.min.js'>\x3C/script>")
+    </script>
+    <script src="js/libs/jquery.easing.min.js"></script>
+    <script src="js/libs/jquery.scrollstop.js"></script>
+    <script src="js/libs/jquery.scrollsnap.js"></script>
+    <script src="js/libs/jquery.hotkeys.js"></script>
+    <script src="js/libs/jquery.infieldlabel.min.js"></script>
+    <script src="js/libs/jquery.event.move.js"></script>
+    <script src="js/libs/jquery.event.swipe.js"></script>
+    <script src="js/imageCache.js"></script>
+    <script src="js/form.js"></script>
+		<script src="js/classie.js" type="text/javascript"></script>
+		<script src="js/script.js" type="text/javascript"></script>
+	</body>
+</html>

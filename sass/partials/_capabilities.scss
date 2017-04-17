@@ -1,0 +1,143 @@
+#capabilities {
+ // background: url(/images/capabilities-bg.png) no-repeat center -3em;
+  
+  article {
+    margin: 0 auto;
+    max-width: 61em;
+  
+    header {
+      background: #f6f6f6;
+      border: 1px dotted $light-blue;
+      margin: 0 auto 4em;
+      padding: 1em 0;
+      top: 2em;
+      width: 95%;
+
+      &:after {
+        border: 1px dotted $light-blue;
+      }
+      
+      h1 {
+        color: $blue;
+        font-size: 3.5em;
+        line-height: 95%;
+        text-shadow: 1px 1px 0px $gray, 2px 2px 0px $light-blue;
+        text-transform: uppercase;
+      }
+      
+      h2 {
+        color: $light-blue;
+        font-size: 1.1em;
+        line-height: 115%;
+        margin: 0 auto;
+        width: 90%;
+      }
+      
+      h3 {
+        color: $light-blue;
+        font-family: 'JosefinSlabBold';
+        font-size: 1.16em;
+        text-transform: uppercase;
+      }
+    }
+    
+    section {
+      height: auto;
+      margin: 0 2.5% 2em;
+      padding: 0 3%;
+      text-align: justify;
+      
+      h1, h2, h3, h4, h5, h6 {
+        text-transform: uppercase;
+      }
+      
+      h2 {
+        font-size: 1em;
+      }
+      
+      p {
+        font-family: 'ProximaNovaRegular', Helvetica, Arial, sans-serif;
+        font-size: .88em;
+        margin-bottom:1.625em;
+        line-height: 1.3em;
+        
+        a {
+          background: $yellow;
+          border-bottom: 1px solid $black;
+          color: $black;
+        }
+      }
+    }
+
+    ul.solutions {
+      margin: 2em 0;
+
+      li {
+        float: left;
+        list-style-type: none;
+        padding-bottom: 2em;
+        width: 48%;
+
+        &.odd {
+          margin-left: 3%;
+        }
+
+        h3, p {
+          margin-left: 85px;
+        }
+
+        span.icon {
+          background-position: top right;
+          background-repeat: no-repeat;
+          display: block;
+          float: left;
+          height: 60px;
+          width: 68px;
+        }
+
+        &.strategy {
+          
+          span.icon {
+            background-image: url(/images/icons/capabilities/strategy.png);
+          }
+        }
+        &.social {
+
+          span.icon{
+            background-image: url(/images/icons/capabilities/social.png);
+          }
+        }
+        &.design {
+
+          span.icon {
+            background-image: url(/images/icons/capabilities/design.png);
+          }
+        }
+        &.development {
+
+          span.icon {
+            background-image: url(/images/icons/capabilities/development.png);
+          }
+        }
+        &.marketing {
+
+          span.icon {
+            background-image: url(/images/icons/capabilities/marketing.png);
+          }
+        }
+        &.data {
+          
+          span.icon {
+            background-image: url(/images/icons/capabilities/data.png);
+          }
+        }
+        &.analysis {
+          
+          span.icon {
+            background-image: url(/images/icons/capabilities/analysis.png);
+          }
+        }
+      }
+    }
+  }
+}

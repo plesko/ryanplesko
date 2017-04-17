@@ -1,0 +1,32 @@
+$white: #ffffff;
+$almost-white: #f2f2f2;
+$light-gray: #dadde1;
+$gray: #727374;
+$dark-gray: #444950;
+$black: #282828;
+$orange: #d2650c;
+$yellow: #ecc66a;
+$dark-yellow: #d9a936;
+$green: #859c3d;
+$light-blue: #4e93bb;
+$blue: #1e6893;
+$dark-blue: #3e5385; // New Nav 
+
+@import "compass/css3";
+
+@import "h5bp";
+@include h5bp-helpers;
+@include h5bp-chromeframe;
+@include h5bp-media;
+
+@import "partials/main";
+@import "partials/global";
+@import "partials/nav";
+@import "partials/sections";
+@import "partials/home";
+@import "partials/about";
+@import "partials/capabilities";
+@import "partials/work";
+@import "partials/contact";
+@import "partials/responsive";
+// @import "partials/print";

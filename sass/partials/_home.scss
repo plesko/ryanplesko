@@ -1,0 +1,74 @@
+#home {
+  
+  header {
+    margin-top: 6em;
+    text-align: center;
+       
+    hgroup {
+      display: inline-block;
+      
+      h1 {
+        background: url(/images/ryan-plesko-large-blue.png) no-repeat left top;
+        display: block;
+        height: 204px;
+        width: 649px;
+        text-indent: -9999px;
+        outline: none;
+      }
+      
+      h2 {
+        display: block;
+        height: 0px;
+        width: 100%;
+        text-indent: -9999px;
+        outline: none;
+      }
+    }
+  }
+
+  article {
+    margin: 30px auto 0;
+    position: relative;
+    width: 649px;
+
+    ul {
+      position: relative;
+      left: 256px;
+    }
+  }
+    
+  figure {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 20;
+    
+    img {
+      margin: 0 auto;
+      width: 35em;
+    }
+  }
+
+  article {
+
+    ul {
+
+      li {
+        color: #3e5385;
+        display: block;
+        font-size: 1.5em;
+        font-family: 'ProximaNovaLight';
+        letter-spacing: .08em;
+
+        &.jokes {
+          color: rgba(0, 0, 0, 0.08);
+
+          span {
+            color: rgba(0, 0, 0, .06);
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
